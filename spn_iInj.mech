@@ -1,0 +1,14 @@
+% Injected current
+
+% Parameters
+injectedCurrent = 0     % microA/cm^2
+inj_onset = 0
+
+% Current function
+i_inj(t) = injectedCurrent*(t>inj_onset)
+
+% Linker
+@current += i_inj(t)
+
+% Monitor
+monitor i_inj

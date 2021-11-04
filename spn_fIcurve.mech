@@ -1,0 +1,21 @@
+% fIcurve
+
+% Parameters
+tOn_fIcurve = 0                % in ms
+tOff_fIcurve = 0               % in ms
+npoints_fIcurve = 10
+minInjCurrent_f Icurve = 0     % microA/cm^2
+maxInjCurrent_fIcurve = 0      % microA/cm^2
+
+% Functions
+tstep_fIcurve = (tOff_fIcurve-tOn_fIcurve)/npoints_fIcurve
+i_inj(t) = (t<=tOff_fIcurve) * (minInjCurrent_fIcurve*(t>=tOn_fIcurve) + (maxInjCurrent_fIcurve-minInjCurrent_fIcurve)*sum(t>=(tOn_fIcurve+tstep_fIcurve:tstep_fIcurve:tOff_fIcurve-tstep_fIcurve))/(npoints_fIcurve-1))
+
+mask_fIcurve = ones(1,Npop)            % whole pop
+% mask_fIcurve = [1zeros(Npop-1,1)]    % single unit
+
+% Linker
+@current += i_inj(t)
+
+% Monitor
+monitor i_inj
