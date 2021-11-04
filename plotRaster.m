@@ -1,22 +1,14 @@
-function rate = plotRaster(t,rst,xl)
+function rate = plotRaster(multiplicity,t,rst,xl)
   rate = [];
   if isempty(rst)
     return
   end
 
-  if nargin < 3
+  if nargin < 4
     xl = [t(1) t(end)];
   end
 
-  npopulations = numel(rst);
-  N = 0;
-  for ipopulation = 1:npopulations
-    raster = rst{ipopulation};
-    raster = raster(raster(:,1) >= xl(1) & raster(:,1) <= xl(2),:);
-    neuronTag = raster(:,2);
-    N = max(N, max(neuronTag));
-  end
-  N =150;
+  npopulations = size(multiplicity, 2);
   width = 1;
 
   colors = [33, 113, 181; 239, 59, 44]./255;
@@ -31,14 +23,14 @@ function rate = plotRaster(t,rst,xl)
     raster = rst{ipopulation};
     raster = raster(raster(:,1) >= xl(1) & raster(:,1) <= xl(2),:);
     neuronTag = raster(:,2);
-    rate(ipopulation) = sum(raster(neuronTag <= width*N,1) >= xl(1) & raster(neuronTag <= width*N,1) <= xl(2))/(1e-3*diff(xl))/(width*N); % in sp/s
+    rate(ipopulation) = sum(raster(neuronTag <= width*multiplicity(ipopulation),1) >= xl(1) & raster(neuronTag <= width*multiplicity(ipopulation),1) <= xl(2))/(1e-3*diff(xl))/(width*multiplicity(ipopulation)); % in sp/s
     plot(raster(:,1),raster(:,2)-0.5,'ko','markerfacecolor',colors(ipopulation,:),'markerSize',4,'linewidth',lineWidth)
-    if N >= 75
-      set(gca,'fontSize',fontSize,'LineWidth',lineWidth,'TickDir','out','Box','on','YTick',0:25:N);
-    elseif N >= 30
-      set(gca,'fontSize',fontSize,'LineWidth',lineWidth,'TickDir','out','Box','on','YTick',0:10:N);
+    if multiplicity(ipopulation) >= 75
+      set(gca,'fontSize',fontSize,'LineWidth',lineWidth,'TickDir','out','Box','on','YTick',0:25:multiplicity(ipopulation));
+    elseif multiplicity(ipopulation) >= 30
+      set(gca,'fontSize',fontSize,'LineWidth',lineWidth,'TickDir','out','Box','on','YTick',0:10:multiplicity(ipopulation));
     else
-      set(gca,'fontSize',fontSize,'LineWidth',lineWidth,'TickDir','out','Box','on','YTick',0:5:N);
+      set(gca,'fontSize',fontSize,'LineWidth',lineWidth,'TickDir','out','Box','on','YTick',0:5:multiplicity(ipopulation));
     end
 
     if ~exist('rate_label','var')
@@ -48,7 +40,7 @@ function rate = plotRaster(t,rst,xl)
     end
   end
 
-  ylim([1,N])
+  ylim([1,max(multiplicity)])
   xlabel('Time (ms)','fontSize',fontSize)
   ylabel('SPNs','fontSize',fontSize)
   if ~isempty(rate_label)

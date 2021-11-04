@@ -169,4 +169,4 @@ data = dsSimulate(s,'time_limits',tspan,'dt',0.05,'solver','rk4');
 raster{1} = computeRaster(data.time,data.D1_SPN_V);
 raster{2} = computeRaster(data.time,data.D2_SPN_V);
 tl = [tOn+transient, tOff]; % [tOn, tOff];
-rate = plotRaster(tl,raster);
+rate = plotRaster(multiplicity,tl,raster);
