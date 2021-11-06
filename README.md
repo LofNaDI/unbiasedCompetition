@@ -1,4 +1,4 @@
-This is the [DynaSim](https://github.com/DynaSim/DynaSim) code implementation of the model described in **"Ardid, Sherfey, McCarthy, Hass, Pittman-Polletta, & Kopell (2019). Biased competition in the absence of input bias revealed through corticostriatal computation", published in the journal *Proceedings of the National Academy of Sciences, USA***.
+This is the [DynaSim](https://github.com/DynaSim/DynaSim) code implementation of the model described in **"Ardid, Sherfey, McCarthy, Hass, Pittman-Polletta, & Kopell (2019). Biased competition in the absence of input bias revealed through corticostriatal computation", published in *Proceedings of the National Academy of Sciences, USA***.
 
 We conceptualize **Unbiased Competition** as *biased competition in the absence of input bias*, in contraposition to the traditional **Biased Competition** conception, which refers to *biased competition due to an input bias*.  
 
