@@ -12,5 +12,5 @@ The code is free but copyrighted by Salva Ardid, and distributed under the terms
 The code contains the following type of files:
 
 1. **spn_network.m** file: This is the main script.
-2. **.mech** files: These files contain DynaSim mechanisms. For more information about how to develop or implement mechanisms using Dynasim, please check the [Dynasim's wiki](https://github.com/DynaSim/DynaSim/wiki).
+2. **.mech** files: These files contain DynaSim mechanisms. For more information about how to develop or implement mechanisms using Dynasim, please check [Dynasim's wiki](https://github.com/DynaSim/DynaSim/wiki).
 3. Other **.m** files: These m-script functions are used for implementing the specifics of Poisson inputs in the model as well as computing and plotting rastergrams of neurons' activity. 
