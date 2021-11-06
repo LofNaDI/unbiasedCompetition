@@ -6,7 +6,7 @@ The code is free but copyrighted by Salva Ardid, and distributed under the terms
 
 > Ardid, S., Sherfey, J. S., McCarthy, M. M., Hass, J., Pittman-Polletta, B. R., & Kopell, N. (2019). **Biased competition in the absence of input bias revealed through corticostriatal computation.** Proceedings of *the National Academy of Sciences*, 116(17), 8564-8569.
 > 
-> Code repository: https://github.com/LofNaDI/Unbiased_Competition
+> Code repository: https://github.com/LofNaDI/unbiasedCompetition
 
   
 The code contains the following type of files:
