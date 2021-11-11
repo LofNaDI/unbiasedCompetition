@@ -13,4 +13,4 @@ caConcentration' = -caConcentration/tau_caConcentration + caf_caConcentration.*(
 caConcentration(0) = 0
 
 % Linkers
-@cai += caConcentration
+@cab += caConcentration

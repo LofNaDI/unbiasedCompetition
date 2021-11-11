@@ -9,12 +9,12 @@ tau_offset_kca = 120                  % 130
 tau_scaling_kca = 0                   % 90 % tau_offset_kca-30 % tau_offset_kca-20
 
 % Functions and HH ca-dependent potassium current
-minf_kca(caConcentration) = 1./(1+exp(-((caConcentration)-caConcentration_offset_kca)/caConcentration_slope_kca))
-tau_kca(caConcentration) = tau_offset_kca-tau_scaling_kca*minf_kca(caConcentration)
+minf_kca(ca) = 1./(1+exp(-((ca)-caConcentration_offset_kca)/caConcentration_slope_kca))
+tau_kca(ca) = tau_offset_kca-tau_scaling_kca*minf_kca(ca)
 i_kca(V,m_kca) = - g_kca*m_kca.*(V-E_kca)
 
 % ODEs and ICs
-m_kca' = (minf_kca(@cai)-m_kca)./tau_kca(@cai)
+m_kca' = (minf_kca(@cab)-m_kca)./tau_kca(@cab)
 m_kca(0) = 0
 
 % Linker
